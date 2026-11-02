@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merry Mini-Games — Support</title>
+<meta name="description" content="Support and contact for Merry Mini-Games, four festive mini-games for iPhone and iPad.">
+<style>
+  :root {
+    --bg: #f6f7fb;
+    --card: #ffffff;
+    --ink: #1c2330;
+    --muted: #5b6472;
+    --accent: #c7333e;
+    --accent2: #1c7049;
+    --line: #e6e8ef;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0c1020;
+      --card: #141a2c;
+      --ink: #eef1f7;
+      --muted: #a3adbe;
+      --accent: #ee525a;
+      --accent2: #3fae72;
+      --line: #26304a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 40px 22px 72px; }
+  header { text-align: center; margin-bottom: 28px; }
+  .badge { font-size: 42px; line-height: 1; }
+  h1 { font-size: 1.7rem; margin: 12px 0 4px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); font-size: 0.95rem; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+  }
+  h2 { font-size: 1.05rem; margin: 0 0 10px; }
+  p { margin: 0 0 12px; }
+  p:last-child { margin-bottom: 0; }
+  ul { margin: 0 0 12px; padding-left: 20px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent2); }
+  .games { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .game { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .game b { display: block; margin-bottom: 2px; }
+  .game span { color: var(--muted); font-size: 0.9rem; }
+  footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 28px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">🎄</div>
+      <h1>Merry Mini-Games</h1>
+      <div class="sub">Four festive mini-games for iPhone and iPad</div>
+    </header>
+
+    <section>
+      <h2>Need a hand?</h2>
+      <p>Email <a href="mailto:support@epicgrowthsolutions.net">support@epicgrowthsolutions.net</a>
+         and we'll get back to you. It helps to include your device model and iOS version.</p>
+    </section>
+
+    <section>
+      <h2>What's in it</h2>
+      <div class="games">
+        <div class="game"><b>Gift Catch</b><span>Catch the falling presents, dodge the coal</span></div>
+        <div class="game"><b>Memory Match</b><span>Find the matching pairs</span></div>
+        <div class="game"><b>Whack-an-Elf</b><span>Bonk the elves, avoid the Grinch</span></div>
+        <div class="game"><b>Merry Merge</b><span>Drop and combine up to the tree</span></div>
+      </div>
+      <p style="margin-top:14px">Plus a daily challenge everyone plays the same board for, a
+         25-door advent calendar, and medals for your best runs.</p>
+    </section>
+
+    <section>
+      <h2>Common questions</h2>
+      <p><b>Where are my scores kept?</b> On your device, and nowhere else. There are no accounts
+         and nothing is uploaded, so scores don't follow you to a new phone.</p>
+      <p><b>Does it need the internet?</b> No. The whole app works offline, including the daily
+         challenge — the date itself is the shared seed, so everyone gets the same board without
+         anything being synced.</p>
+      <p><b>Why is the advent calendar locked?</b> Doors open on their own day, December 1st to
+         25th. Outside December the calendar shows as a preview.</p>
+      <p><b>How do I turn off music, sound or haptics?</b> Tap the ⓘ button on the home screen.</p>
+    </section>
+
+    <section>
+      <h2>Privacy</h2>
+      <p>Merry Mini-Games collects no data at all — no analytics, no tracking, no third-party SDKs.
+         The full policy is at <a href="privacy.html">privacy.html</a>.</p>
+    </section>
+
+    <footer>© 2026 Epic Growth Solutions. All rights reserved.</footer>
+  </div>
+</body>
+</html>
