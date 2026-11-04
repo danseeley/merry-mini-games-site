@@ -90,8 +90,9 @@
   .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:.8rem; font-weight:750; letter-spacing:.1em;
       text-transform:uppercase; color:var(--gold); border:1px solid rgba(245,196,81,.32);
       background:rgba(245,196,81,.08); padding:6px 13px; border-radius:999px; margin-bottom:20px}
-  h1{font-size:clamp(2.3rem,5.4vw,3.6rem); line-height:1.06; letter-spacing:-.03em; margin:0 0 18px; font-weight:820}
-  h1 .pop{color:var(--red)}
+  h1{font-size:clamp(2.5rem,5.8vw,3.9rem); line-height:1.02; letter-spacing:-.035em; margin:0 0 18px; font-weight:820}
+  /* Second line is its own block so the phrase never breaks mid-thought. */
+  h1 .pop{display:block; color:var(--red); font-size:.62em; letter-spacing:-.025em; margin-top:.12em}
   .lede{font-size:1.16rem; color:#cdd8ee; margin:0 0 26px; max-width:33em}
   .cta-row{display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-bottom:22px}
   .trust{display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin:0}
@@ -243,10 +244,10 @@
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <span class="eyebrow">🎄 A growing collection · iPhone &amp; iPad</span>
-        <h1 id="h1">Christmas, <span class="pop">one round at a time.</span></h1>
-        <p class="lede">Merry Mini-Games is a cosy collection of festive mini-games wrapped in
-          hand-sculpted clay art and gentle falling snow. A new shared challenge every day, 25 advent
-          doors to open, and medals to chase — all of it offline, and none of it watching you.</p>
+        <h1 id="h1">Christmas,<span class="pop"> one round at a time.</span></h1>
+        <p class="lede">A cosy collection of Christmas mini-games for iPhone and iPad, drawn in clay
+          and set under falling snow. There's a new challenge every day, a door to open through
+          December, and a medal to chase in every game. No ads, no sign-up, and it all works offline.</p>
         <div class="cta-row">
           <a class="appstore" href="https://apps.apple.com/app/id6806576708" aria-label="Download Merry Mini-Games on the App Store">
             <svg viewBox="0 0 384 512" aria-hidden="true" focusable="false"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
@@ -273,10 +274,10 @@
   <section id="games" aria-labelledby="games-h">
     <div class="wrap">
       <div class="sec-head">
-        <h2 id="games-h">A Christmas game for every kind of minute</h2>
-        <p>Quick arcade rounds when you have a minute, slower puzzles when you have longer. Every one of
-           them keeps its own best score and its own set of medals, the collection keeps growing, and
-           every clip here is real gameplay recorded on an iPhone.</p>
+        <h2 id="games-h">What's in the app</h2>
+        <p>Quick arcade rounds when you have a minute, slower puzzles when you have longer. Each one
+           keeps its own best score and its own medals, and the collection keeps growing. Every clip
+           here is real gameplay, recorded on an iPhone.</p>
       </div>
 
       <div class="carousel">
@@ -306,8 +307,8 @@
           <div class="shot"><picture><source srcset="img/still-whack-an-elf.webp" media="(prefers-reduced-motion: reduce)" type="image/webp"><img src="img/play-whack-an-elf.webp" width="320" height="696" loading="lazy" decoding="async" alt="Whack-an-Elf gameplay — looping clip of snowy mounds in a grid with a clay elf popping out of one of them."></picture></div>
           <span class="tag">Arcade</span>
           <h3>Whack-an-Elf</h3>
-          <p>Bonk the elves and Santa as they pop out of the snow — but never the Grinch. Thirty seconds
-             on the clock and no time to think.</p>
+          <p>Bonk the elves and Santa as they pop out of the snow, but never the Grinch. Thirty seconds
+             on the clock.</p>
         </article>
 
         <article class="game">
@@ -358,16 +359,15 @@
   <section id="daily" aria-labelledby="daily-h">
     <div class="wrap split">
       <div>
-        <span class="tag">Every single day</span>
-        <h2 id="daily-h">One board. Everybody. Same day.</h2>
-        <p style="color:var(--muted)">Every day brings a single shared Daily Challenge — the same game and
-          the exact same board for everyone, everywhere. It is generated from the date itself, so nothing
-          has to be downloaded or synced for your board to match your family's on the other side of the
-          world. Keep the streak alive and share how you did.</p>
+        <span class="tag">Daily challenge &amp; advent</span>
+        <h2 id="daily-h">A challenge a day, a door through December</h2>
+        <p style="color:var(--muted)">Each day has one Daily Challenge, and everyone plays the same board.
+          It's built from the date, so your board matches your family's without anything being downloaded
+          or synced. Play it, keep your streak going, and share how you did.</p>
+        <p style="color:var(--muted)">Through December the advent calendar has a door a day: a festive fact
+          and a sticker for your share card. No door opens early.</p>
         <ul>
-          <li><strong>25 days of advent.</strong> Open a door a day through December for a festive fact and
-              a sticker for your share card. No door opens early.</li>
-          <li><strong>Medals.</strong> Bronze, silver and gold in every game, so there is always a next rung.</li>
+          <li><strong>Medals</strong> in every game, bronze through gold.</li>
           <li><strong>A home screen widget</strong> counting the sleeps 'til Christmas, with your streak and
               advent progress.</li>
         </ul>
@@ -383,28 +383,27 @@
   <section id="features" aria-labelledby="feat-h">
     <div class="wrap">
       <div class="sec-head">
-        <h2 id="feat-h">Built to be a nice thing to own</h2>
-        <p>No ads to sit through, nothing to buy, nothing to sign up for, and nothing sent anywhere.</p>
+        <h2 id="feat-h">Simple, secure, private</h2>
+        <p>No ads, nothing to buy, no account to make, and nothing that leaves your device.</p>
       </div>
       <div class="feats">
         <div class="feat"><div class="ic" aria-hidden="true">🚫</div><h3>No ads, ever</h3>
-          <p>No banners, no interstitials, no rewarded video, and no in-app purchases. You open the app and
-             you play the game.</p></div>
+          <p>No banners, no interstitials, no rewarded video, no in-app purchases. Open it and play.</p></div>
         <div class="feat"><div class="ic" aria-hidden="true">✈️</div><h3>Works offline</h3>
-          <p>The whole app runs without a connection — the Daily Challenge included, because the date itself
-             is the shared seed.</p></div>
+          <p>The whole app runs without a connection, the Daily Challenge included. Your board comes from
+             the date, not from a server.</p></div>
         <div class="feat"><div class="ic" aria-hidden="true">🔒</div><h3>Collects nothing</h3>
-          <p>No analytics, no tracking, no third-party SDKs, no accounts. Your scores live on your device and
-             nowhere else.</p></div>
-        <div class="feat"><div class="ic" aria-hidden="true">♿️</div><h3>Properly accessible</h3>
+          <p>No analytics, no tracking, no third-party SDKs, no accounts. Your scores stay on your
+             device.</p></div>
+        <div class="feat"><div class="ic" aria-hidden="true">♿️</div><h3>Accessible</h3>
           <p>Full VoiceOver support, a Large Text setting, respect for Reduce Motion, and puzzle pieces that
              carry a shape as well as a colour.</p></div>
         <div class="feat"><div class="ic" aria-hidden="true">📱</div><h3>iPhone and iPad</h3>
           <p>One universal app, laid out for both. iPhone plays in portrait, and iPad rotates to all
              four orientations.</p></div>
         <div class="feat"><div class="ic" aria-hidden="true">🎨</div><h3>Hand-sculpted art</h3>
-          <p>Every sleigh, elf and snow globe is drawn in the same warm clay style, under a night sky with
-             snow falling across it.</p></div>
+          <p>Every sleigh, elf and snow globe is drawn in the same warm clay style, under a night sky
+             with snow coming down.</p></div>
       </div>
     </div>
   </section>
@@ -414,7 +413,7 @@
     <div class="wrap">
       <div class="band">
         <h2 id="dl-h">Get Merry Mini-Games</h2>
-        <p>Free on the App Store for iPhone and iPad, iOS 17 or later. Nothing to buy once you are in.</p>
+        <p>Free on the App Store for iPhone and iPad, iOS 17 or later. Nothing to buy once you're in.</p>
         <a class="appstore" href="https://apps.apple.com/app/id6806576708" aria-label="Download Merry Mini-Games on the App Store">
           <svg viewBox="0 0 384 512" aria-hidden="true" focusable="false"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
           <span><span class="l1">Download on the</span><span class="l2">App Store</span></span>
@@ -429,7 +428,7 @@
       <div class="sec-head">
         <h2 id="sup-h">Support</h2>
         <p>Something not working, or just want to tell us something? Email
-           <a href="mailto:support@epicgrowthsolutions.net">support@epicgrowthsolutions.net</a> and we will
+           <a href="mailto:support@epicgrowthsolutions.net">support@epicgrowthsolutions.net</a> and we'll
            get back to you. It helps to include your device model and iOS version.</p>
       </div>
 
@@ -441,8 +440,8 @@
         </details>
         <details>
           <summary>Does it need an internet connection?</summary>
-          <div class="body"><p>No. The whole app works offline, the Daily Challenge included — the date
-             itself is the shared seed, so everyone gets the same board without anything being synced.</p></div>
+          <div class="body"><p>No. The whole app works offline, the Daily Challenge included. Everyone's board
+             is built from the date, so you all get the same one without anything being synced.</p></div>
         </details>
         <details>
           <summary>Why is the advent calendar locked?</summary>
@@ -456,8 +455,7 @@
         </details>
         <details>
           <summary>Are there ads or in-app purchases?</summary>
-          <div class="body"><p>Neither. The app is free, there is nothing to buy inside it, and there are
-             no adverts of any kind.</p></div>
+          <div class="body"><p>Neither. The app is free, and there's nothing to buy once you're in.</p></div>
         </details>
         <details>
           <summary>What does the app collect about me?</summary>
@@ -629,13 +627,13 @@
         { "@type": "Question", "name": "Where are my scores kept?",
           "acceptedAnswer": { "@type": "Answer", "text": "On your device, and nowhere else. There are no accounts and nothing is uploaded, so your scores and streak do not follow you to a new phone." } },
         { "@type": "Question", "name": "Does Merry Mini-Games need an internet connection?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. The whole app works offline, the Daily Challenge included — the date itself is the shared seed, so everyone gets the same board without anything being synced." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "No. The whole app works offline, the Daily Challenge included. Everyone's board is built from the date, so you all get the same one without anything being synced." } },
         { "@type": "Question", "name": "Why is the advent calendar locked?",
           "acceptedAnswer": { "@type": "Answer", "text": "Doors open on their own day, December 1st to 25th. Outside December the calendar shows as a preview." } },
         { "@type": "Question", "name": "How do I turn off the music, sound or haptics?",
           "acceptedAnswer": { "@type": "Answer", "text": "Tap the information button in the top right of the home screen. Music, sound effects, haptics and a Large Text setting all live there." } },
         { "@type": "Question", "name": "Are there ads or in-app purchases?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Neither. The app is free, there is nothing to buy inside it, and there are no adverts of any kind." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Neither. The app is free, and there's nothing to buy once you're in." } },
         { "@type": "Question", "name": "What does the app collect about me?",
           "acceptedAnswer": { "@type": "Answer", "text": "Nothing at all — no analytics, no tracking and no third-party SDKs." } },
         { "@type": "Question", "name": "Which devices does Merry Mini-Games run on?",
