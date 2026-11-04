@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Merry Mini-Games — Seven Festive Christmas Games for iPhone &amp; iPad</title>
-<meta name="description" content="Merry Mini-Games is a cosy collection of seven Christmas mini-games for iPhone and iPad, with a shared Daily Challenge, a 25-door advent calendar and medals. No ads, no in-app purchases, no accounts, no tracking — and it plays completely offline.">
+<title>Merry Mini-Games — Festive Christmas Games for iPhone &amp; iPad</title>
+<meta name="description" content="Merry Mini-Games is a cosy collection of Christmas mini-games for iPhone and iPad, with a shared Daily Challenge, a 25-door advent calendar and medals. No ads, no in-app purchases, no accounts, no tracking — and it plays completely offline.">
 <link rel="canonical" href="https://games.epicgrowthsolutions.net/">
 <meta name="author" content="Epic Growth Solutions">
 <meta name="theme-color" content="#0b1026">
@@ -15,15 +15,15 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Merry Mini-Games">
 <meta property="og:url" content="https://games.epicgrowthsolutions.net/">
-<meta property="og:title" content="Merry Mini-Games — Seven Festive Christmas Games for iPhone &amp; iPad">
-<meta property="og:description" content="Seven Christmas mini-games, a shared Daily Challenge and a 25-door advent calendar. No ads, no tracking, plays offline.">
+<meta property="og:title" content="Merry Mini-Games — Festive Christmas Games for iPhone &amp; iPad">
+<meta property="og:description" content="A growing collection of Christmas mini-games, a shared Daily Challenge and a 25-door advent calendar. No ads, no tracking, plays offline.">
 <meta property="og:image" content="https://games.epicgrowthsolutions.net/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Merry Mini-Games — clay-style Christmas game pieces lined up on snow under a night sky.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Merry Mini-Games — Seven Festive Christmas Games for iPhone &amp; iPad">
-<meta name="twitter:description" content="Seven Christmas mini-games, a shared Daily Challenge and a 25-door advent calendar. No ads, no tracking, plays offline.">
+<meta name="twitter:title" content="Merry Mini-Games — Festive Christmas Games for iPhone &amp; iPad">
+<meta name="twitter:description" content="A growing collection of Christmas mini-games, a shared Daily Challenge and a 25-door advent calendar. No ads, no tracking, plays offline.">
 <meta name="twitter:image" content="https://games.epicgrowthsolutions.net/img/og.jpg">
 
 <link rel="icon" href="favicon.png" sizes="64x64" type="image/png">
@@ -123,13 +123,48 @@
   .sec-head p{color:var(--muted); font-size:1.06rem; margin:0}
   h3{font-size:1.22rem; margin:0 0 6px; letter-spacing:-.015em; font-weight:750}
 
-  /* game cards */
-  .games{display:grid; grid-template-columns:repeat(auto-fit,minmax(268px,1fr)); gap:22px}
+  /* ---------- games carousel ----------
+     A native horizontal scroller: it works with a trackpad, a touch drag and the
+     arrow keys with no script at all. The buttons and dots below are progressive
+     enhancement, and the whole thing grows by itself as games are added. */
+  .carousel{position:relative}
+  .track{
+    display:flex; gap:22px; overflow-x:auto; overflow-y:hidden;
+    scroll-snap-type:x mandatory; scroll-behavior:smooth;
+    padding:4px 4px 10px; margin:0 -4px;
+    scrollbar-width:none; -ms-overflow-style:none;
+    overscroll-behavior-x:contain;
+  }
+  .track::-webkit-scrollbar{display:none}
+  @media (prefers-reduced-motion:reduce){ .track{scroll-behavior:auto} }
+  .track:focus-visible{outline:3px solid var(--gold); outline-offset:6px; border-radius:var(--radius)}
+
   .game{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:18px;
-      display:flex; flex-direction:column; transition:transform .18s ease, border-color .18s ease}
+      display:flex; flex-direction:column; transition:transform .18s ease, border-color .18s ease;
+      flex:0 0 clamp(236px, 76vw, 286px); scroll-snap-align:start}
   .game:hover{transform:translateY(-4px); border-color:rgba(255,255,255,.26)}
-  /* The clips are full phone screens; crop the dead space off the bottom so seven
-     cards stay scannable without losing any of the board. */
+
+  .cbtn{position:absolute; top:34%; transform:translateY(-50%); z-index:5;
+      width:46px; height:46px; border-radius:50%; cursor:pointer; padding:0;
+      display:grid; place-items:center; color:var(--ink);
+      background:rgba(11,16,38,.78); border:1px solid rgba(255,255,255,.22);
+      backdrop-filter:blur(10px); box-shadow:0 10px 26px rgba(0,0,0,.45);
+      transition:opacity .18s ease, background .18s ease, transform .18s ease}
+  .cbtn svg{width:21px; height:21px}
+  .cbtn:hover{background:rgba(28,38,78,.95); transform:translateY(-50%) scale(1.06)}
+  .cbtn.prev{left:-14px}
+  .cbtn.next{right:-14px}
+  .cbtn[disabled]{opacity:0; pointer-events:none}
+  /* No script, no buttons — the scroller still works, so don't show dead controls. */
+  html:not(.js) .cbtn, html:not(.js) .cdots{display:none}
+  @media (max-width:900px){ .cbtn{display:none} }
+
+  .cdots{display:flex; gap:8px; justify-content:center; margin-top:16px}
+  .cdots span{width:8px; height:8px; border-radius:999px; background:rgba(255,255,255,.24);
+      transition:width .22s ease, background .22s ease}
+  .cdots span[data-on="true"]{width:24px; background:var(--gold)}
+  /* The clips are full phone screens; crop the dead space off the bottom so the cards
+     stay scannable without losing any of the board. */
   .game .shot{border-radius:14px; overflow:hidden; background:#0a0f24; margin-bottom:16px;
       border:1px solid rgba(255,255,255,.09); aspect-ratio:9/16}
   .game .shot img{width:100%; height:100%; object-fit:cover; object-position:top center}
@@ -181,6 +216,7 @@
 </style>
 </head>
 <body>
+<script>document.documentElement.className += " js";</script>
 <div class="sky" aria-hidden="true"></div>
 <div class="snowfield" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
@@ -206,9 +242,9 @@
   <section class="hero" aria-labelledby="h1">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow">🎄 Seven games · iPhone &amp; iPad</span>
+        <span class="eyebrow">🎄 A growing collection · iPhone &amp; iPad</span>
         <h1 id="h1">Christmas, <span class="pop">one round at a time.</span></h1>
-        <p class="lede">Merry Mini-Games is a cosy collection of seven festive mini-games wrapped in
+        <p class="lede">Merry Mini-Games is a cosy collection of festive mini-games wrapped in
           hand-sculpted clay art and gentle falling snow. A new shared challenge every day, 25 advent
           doors to open, and medals to chase — all of it offline, and none of it watching you.</p>
         <div class="cta-row">
@@ -237,12 +273,18 @@
   <section id="games" aria-labelledby="games-h">
     <div class="wrap">
       <div class="sec-head">
-        <h2 id="games-h">Seven games in one app</h2>
+        <h2 id="games-h">A Christmas game for every kind of minute</h2>
         <p>Quick arcade rounds when you have a minute, slower puzzles when you have longer. Every one of
-           them keeps its own best score and its own set of medals. Every clip below is real gameplay,
-           recorded on an iPhone.</p>
+           them keeps its own best score and its own set of medals, the collection keeps growing, and
+           every clip here is real gameplay recorded on an iPhone.</p>
       </div>
-      <div class="games">
+
+      <div class="carousel">
+        <button class="cbtn prev" type="button" aria-label="Show previous games" aria-controls="games-track">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="track" id="games-track" role="group"
+             aria-label="The games — scroll sideways for more" tabindex="0">
 
         <article class="game">
           <div class="shot"><picture><source srcset="img/still-gift-catch.webp" media="(prefers-reduced-motion: reduce)" type="image/webp"><img src="img/play-gift-catch.webp" width="320" height="696" loading="lazy" decoding="async" alt="Gift Catch gameplay — looping clip of a red sleigh at the bottom of a starry sky with wrapped gifts and a lump of coal falling toward it."></picture></div>
@@ -303,7 +345,12 @@
              be finished.</p>
         </article>
 
+        </div>
+        <button class="cbtn next" type="button" aria-label="Show more games" aria-controls="games-track">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
+      <div class="cdots" id="games-dots" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -353,8 +400,8 @@
           <p>Full VoiceOver support, a Large Text setting, respect for Reduce Motion, and puzzle pieces that
              carry a shape as well as a colour.</p></div>
         <div class="feat"><div class="ic" aria-hidden="true">📱</div><h3>iPhone and iPad</h3>
-          <p>One universal app, laid out for both. iPad rotates to all four orientations; all seven games fit
-             one iPad screen without scrolling.</p></div>
+          <p>One universal app, laid out for both. iPhone plays in portrait, and iPad rotates to all
+             four orientations.</p></div>
         <div class="feat"><div class="ic" aria-hidden="true">🎨</div><h3>Hand-sculpted art</h3>
           <p>Every sleigh, elf and snow globe is drawn in the same warm clay style, under a night sky with
              snow falling across it.</p></div>
@@ -442,6 +489,83 @@
   </div>
 </footer>
 
+<script>
+/* Games carousel: arrows + page dots over a native scroll-snap scroller.
+   Everything is derived from however many cards are in the DOM and how many fit
+   on screen, so adding a game is just adding another <article class="game">. */
+(function () {
+  var track = document.getElementById('games-track');
+  var dots  = document.getElementById('games-dots');
+  if (!track || !dots) return;
+
+  var prev  = document.querySelector('.cbtn.prev');
+  var next  = document.querySelector('.cbtn.next');
+  var cards = [].slice.call(track.querySelectorAll('.game'));
+  if (!cards.length) return;
+
+  /* The track is padded so hover lift and focus rings aren't clipped, which leaves
+     scrollLeft resting a few px off zero — compare against a tolerance, not 0. */
+  var EDGE = 12;
+  var pages = 0;
+
+  function stride() {
+    var cs  = getComputedStyle(track);
+    var gap = parseFloat(cs.columnGap || cs.gap) || 0;
+    return cards[0].getBoundingClientRect().width + gap;
+  }
+  /* Page, not card: with three cards on screen there are only a few real scroll
+     stops, so a dot per card would have to skip. A dot per page always lands. */
+  function perView() {
+    var cs  = getComputedStyle(track);
+    var gap = parseFloat(cs.columnGap || cs.gap) || 0;
+    return Math.max(1, Math.floor((track.clientWidth + gap) / stride()));
+  }
+  function pageWidth() { return perView() * stride(); }
+
+  /* Assign scrollLeft rather than calling scrollBy({behavior}). The CSS already sets
+     scroll-behavior: smooth and already turns it off under prefers-reduced-motion, so
+     this keeps one source of truth for the animation — and scrollBy's options object
+     is unreliable against a mandatory snap container. */
+  function go(dir) { track.scrollLeft = track.scrollLeft + dir * pageWidth(); }
+
+  function buildDots(n) {
+    if (n === pages) return;
+    pages = n;
+    dots.textContent = '';
+    for (var i = 0; i < n; i++) dots.appendChild(document.createElement('span'));
+    dots.style.display = n > 1 ? '' : 'none';
+  }
+
+  function sync() {
+    buildDots(Math.ceil(cards.length / perView()));
+    var max = track.scrollWidth - track.clientWidth;
+    if (prev) prev.disabled = track.scrollLeft <= EDGE;
+    if (next) next.disabled = track.scrollLeft >= max - EDGE;
+
+    var i = Math.round(track.scrollLeft / pageWidth());
+    if (track.scrollLeft >= max - EDGE) i = pages - 1;   // last page is usually a part-step
+    i = Math.max(0, Math.min(pages - 1, i));
+    for (var n = 0; n < dots.children.length; n++) {
+      dots.children[n].setAttribute('data-on', n === i ? 'true' : 'false');
+    }
+  }
+
+  if (prev) prev.addEventListener('click', function () { go(-1); });
+  if (next) next.addEventListener('click', function () { go(1); });
+
+  var idle;
+  track.addEventListener('scroll', function () {
+    clearTimeout(idle);
+    idle = setTimeout(sync, 70);
+  }, { passive: true });
+  window.addEventListener('resize', function () {
+    clearTimeout(idle);
+    idle = setTimeout(sync, 120);
+  });
+  sync();
+})();
+</script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -465,7 +589,7 @@
         "https://games.epicgrowthsolutions.net/img/shot-merry-merge@2x.webp",
         "https://games.epicgrowthsolutions.net/img/shot-globe-sort@2x.webp"
       ],
-      "description": "A cosy collection of seven festive Christmas mini-games for iPhone and iPad, with a shared Daily Challenge, a 25-door advent calendar and medals. No ads, no in-app purchases, no accounts and no tracking, and it plays completely offline.",
+      "description": "A cosy collection of festive Christmas mini-games for iPhone and iPad, with a shared Daily Challenge, a 25-door advent calendar and medals. No ads, no in-app purchases, no accounts and no tracking, and it plays completely offline.",
       "inLanguage": "en",
       "isFamilyFriendly": true,
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
